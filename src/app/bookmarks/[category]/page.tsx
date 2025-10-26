@@ -27,6 +27,12 @@ const bookmarkCategories = [
   count: bookmarks.filter(b => b.category === category.slug).length
 }));
 
+// For static export we must provide all dynamic route params
+export async function generateStaticParams() {
+  const categories = Array.from(new Set(bookmarks.map((b) => b.category)));
+  return categories.map((category) => ({ category }));
+}
+
 export default async function BookmarksCategoryPage(props: { params: Promise<{ category: string }> }) {
   const { category } = await props.params;
 
