@@ -13,14 +13,26 @@ export const bookmarks: Bookmark[] = [
     title: "How to Supercharge Test Automation with AI and Playwright",
     url: "https://testguild.com/ai-playwright-testing",
     description: "By Test Guild",
-    thumbnail: "https://cdn-bojkm.nitrocdn.com/xNQtoampyRQBytOGuBcersslgKBwHfMI/assets/images/optimized/rev-bb0715a/testguild.com/wp-content/uploads/2025/08/AI-and-Playwright-with-Cursor-TestGuild-1200x0-c-default.png",
+    thumbnail: "/images/bookmarks/testguild-ai-playwright.png",
     category: "ai",
   },
   {
     title: "Playwright AI Agents: Fix Broken Tests Automatically",
     url: "https://testguild.com/playwright-ai-agents",
     description: "By Test Guild",
-    thumbnail: "https://cdn-bojkm.nitrocdn.com/xNQtoampyRQBytOGuBcersslgKBwHfMI/assets/images/optimized/rev-bb0715a/testguild.com/wp-content/uploads/2025/10/Playwright-AI-Agents-Test-Automation-Test-Guild-1200x0-c-default.png",
+    thumbnail: "/images/bookmarks/testguild-playwright-ai-agents.png",
+    category: "ai",
+  },
+  {
+    title: "21st.dev — Community Components",
+    url: "https://21st.dev/community/components",
+    description: "A community-driven registry of React + Tailwind UI components you can search, preview and drop into your app — ideal for AI-assisted, MCP-powered component generation.",
+    category: "ai",
+  },
+  {
+    title: "QA/QE Life with AI: MCP-Assisted Test Cases Generation",
+    url: "https://medium.com/ganeshgaxy/qa-qe-life-with-ai-mcp-assisted-test-cases-generation-e14e3e78edd8",
+    description: "How Model Context Protocol (MCP) servers can be wired into your QA workflow to automatically generate test cases — a practical look at AI-assisted test design.",
     category: "ai",
   },
   {
@@ -98,3 +110,25 @@ export const bookmarks: Bookmark[] = [
 export function getBookmarksByCategory(category: string) {
   return bookmarks.filter((b) => b.category === category);
 }
+
+const categoryNames: Record<string, string> = {
+  ai: "AI",
+  "apps-and-tools": "Apps & Tools",
+  backend: "Backend",
+  frontend: "Frontend",
+  crypto: "Crypto",
+  reading: "Books & Reading",
+  design: "Design",
+  websites: "Websites",
+};
+
+export type BookmarkCategory = { name: string; slug: string; count: number };
+
+// Only categories that actually have bookmarks, ordered by definition above.
+export const bookmarkCategories: BookmarkCategory[] = Object.keys(categoryNames)
+  .map((slug) => ({
+    slug,
+    name: categoryNames[slug],
+    count: bookmarks.filter((b) => b.category === slug).length,
+  }))
+  .filter((c) => c.count > 0);

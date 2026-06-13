@@ -2,33 +2,22 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { navItems } from "@/lib/nav";
 
 export default function KeyboardShortcuts() {
   const router = useRouter();
 
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
-      // Only trigger if no input is focused
-      if (
-        document.activeElement?.tagName === "INPUT" ||
-        document.activeElement?.tagName === "TEXTAREA"
-      ) {
+      // Ignore when typing in a field or using modifier combos
+      const tag = document.activeElement?.tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA" || e.metaKey || e.ctrlKey || e.altKey) {
         return;
       }
 
-      switch (e.key) {
-        case "1":
-          router.push("/");
-          break;
-        case "2":
-          router.push("/journey");
-          break;
-        case "3":
-          router.push("/writing");
-          break;
-        case "4":
-          router.push("/bookmarks");
-          break;
+      const match = navItems.find((item) => item.shortcut === e.key);
+      if (match) {
+        router.push(match.href);
       }
     };
 

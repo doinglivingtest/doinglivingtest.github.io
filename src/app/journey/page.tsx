@@ -1,255 +1,234 @@
-import Sidebar from "@/components/Sidebar";
-import MobileHeader from "@/components/MobileHeader";
+import type { Metadata } from "next";
+import type { ReactNode } from "react";
+import PageShell from "@/components/PageShell";
 
-export const metadata = {
-  title: "Journey — Alejandro Tellez",
-  description: "Personal timeline",
+export const metadata: Metadata = {
+  title: "Journey",
+  description: "The career path of Alejandro Tellez — Senior QA Engineer.",
 };
+
+type Entry = {
+  title: string;
+  body: ReactNode;
+  bullets?: string[];
+};
+
+type YearBlock = {
+  year: string;
+  entries: Entry[];
+};
+
+const link = (label: string, href: string) => (
+  <a href={href} target="_blank" rel="noopener noreferrer" className="link">
+    {label}
+  </a>
+);
+
+const timeline: YearBlock[] = [
+  {
+    year: "2025",
+    entries: [
+      {
+        title: "Joined Ava Labs",
+        body: (
+          <>
+            Senior QA Engineer · Remote — Senior QA Engineer for{" "}
+            {link("Core", "https://core.app/")}, the self-custodial Web3 wallet
+            by Ava Labs on Avalanche.
+          </>
+        ),
+        bullets: [
+          "Designed an AI-driven testing process that integrates Claude with Figma, Atlassian and Playwright MCPs — pulling designs, Jira tickets and PRD documents to automatically generate test scenarios, which are then coded into Playwright suites and self-healed when the UI changes, boosting QA productivity by 50%.",
+          "Own end-to-end QA strategy across the Core browser extension and iOS/Android wallets, defining risk-based coverage and release gating for high-stakes DeFi features.",
+          "Built and maintain a Playwright + TypeScript automation suite simulating real on-chain transactions across Avalanche C/P/X-Chains, Ethereum, Bitcoin and EVM L2s, automating MetaMask and WalletConnect dApp integrations.",
+          "Provided QA support for physical hardware wallets such as Ledger — validating device connection, on-device transaction signing and end-to-end flows against real hardware.",
+          "Gained deep expertise across Core's full Web3 surface — perpetuals trading, staking, swapping, bridging, lending/borrowing, buying, sending and NFTs — to continuously expand and strengthen our regression suite across the entire application.",
+        ],
+      },
+      {
+        title: "Released a new version of my personal website",
+        body: "Rebuilt this site with Next.js and Tailwind CSS.",
+      },
+    ],
+  },
+  {
+    year: "2023",
+    entries: [
+      {
+        title: "Joined Inditex",
+        body: (
+          <>
+            Senior QA Engineer · Remote — Quality owner for the Pattern Designer
+            app at {link("Inditex", "https://www.inditex.com/")}.
+          </>
+        ),
+        bullets: [
+          "Owned quality for the Pattern Designer app end to end.",
+          "Supported Grafana dashboard implementation with InfluxDB and Prometheus to track quality metrics — reducing user-reported bugs by 60% and bug-fixing time by 35%.",
+          "Created a test-coverage and requirements-traceability strategy using Xray in Jira, enabling product decisions under tight deadlines.",
+          "Implemented a Cypress regression suite covering 70% of features and 100% of core features — increasing release confidence and speeding up releases by 20%.",
+        ],
+      },
+    ],
+  },
+  {
+    year: "2022",
+    entries: [
+      {
+        title: "Joined Radix",
+        body: (
+          <>
+            Key projects: Instabridge (cross-chain bridge testing) &amp;{" "}
+            {link("Radix Wallet", "https://www.radixdlt.com/wallet")} (mobile
+            wallet QA &amp; persona validation).
+          </>
+        ),
+        bullets: [
+          "Scaled a Playwright automation suite to 90%+ coverage across Web3 apps.",
+          "Integrated MetaMask and Infura to simulate real decentralized transactions in QA pipelines.",
+          "Designed test strategies for mint/burn token flows across Ethereum and Radix.",
+          "Validated complex React components — wallet connections, manifests and dApp integrations.",
+          "Authored company-wide guidelines for writing semantic, testable code.",
+        ],
+      },
+      {
+        title: "Joined Allianz",
+        body: "Test Architect designing enterprise-level QA automation aligned with Agile/DevOps best practices.",
+        bullets: [
+          "Standardized automation pipelines across 50+ global engineers.",
+          "Automated complex API validations with Rest-Assured, improving defect detection by 40%.",
+          "Mentored QA engineers to adopt modern frameworks and CI/CD integrations.",
+          "Led performance testing initiatives for insurance web applications to ensure they could handle the expected traffic and load.",
+        ],
+      },
+    ],
+  },
+  {
+    year: "2019",
+    entries: [
+      {
+        title: "Joined Monolithic Power Systems",
+        body: "Built a hybrid automation framework spanning desktop and web.",
+        bullets: [
+          "Developed a hybrid Selenium framework (Java, Cucumber, Rest-Assured) reducing regression effort by 70%.",
+          "Automated desktop (WinAppDriver) and web apps (Selenium + Grid); integrated with TestRail and Jenkins CI.",
+          "Led QA documentation, regression suites and exploratory testing workflows.",
+          "Implemented a regression testing framework for desktop applications simulating real devices like chips/semiconductors under test. This framework required extensive knowledge of the hardware and the software running on it.",
+        ],
+      },
+    ],
+  },
+  {
+    year: "Freelance",
+    entries: [
+      {
+        title: "SDET / QA Engineer Contractor",
+        body: (
+          <>
+            Worked with{" "}
+            {link("Lazy Dog Restaurant", "https://www.lazydogrestaurants.com/")},{" "}
+            {link(
+              "Amazon Go",
+              "https://www.amazon.jobs/content/en/teams/worldwide-grocery-stores/amazon-go",
+            )}
+            , {link("neondb", "https://neon.com/")}, among others.
+          </>
+        ),
+        bullets: [
+          "Implemented automation frameworks in TypeScript, Python, Java and Swift (XCUITest, Pytest, Allure).",
+          "Built contract-based testing suites with pact-jvm for backend validation.",
+          "Executed cross-browser E2E tests on BrowserStack for multi-vendor systems.",
+          "Stood up frameworks from scratch with Playwright / Cypress / WebdriverIO.",
+          "Designed UAT workflows and CI/CD-integrated QA pipelines.",
+        ],
+      },
+    ],
+  },
+  {
+    year: "2015",
+    entries: [
+      {
+        title: "Won a DAAD scholarship in Germany",
+        body: "Received the DAAD study-visit scholarship for groups of foreign students, visiting universities and research institutes across Germany. Created a network of students from different levels of study and led the initiative to visit universities and research institutes across Germany.",
+      },
+      {
+        title: "Graduated from university",
+        body: "It felt like forever — now I miss it!",
+      },
+    ],
+  },
+  {
+    year: "2014",
+    entries: [
+      {
+        title: "Joined SPRC",
+        body: "Landed my first role at Sociedad Portuaria Regional Cartagena while studying, broadening my perspective. I started as a software engineer intern implementing simple tasks in Java and later transitioned to QA.",
+      },
+    ],
+  },
+  {
+    year: "2010",
+    entries: [
+      {
+        title: "Started at the University of Cartagena",
+        body: "Studying Software Engineering at a public university was great.",
+      },
+    ],
+  },
+  {
+    year: "1993",
+    entries: [
+      {
+        title: "Born",
+        body: "On the 17th of December, in Colombia 🇨🇴.",
+      },
+    ],
+  },
+];
 
 export default function Journey() {
   return (
-    <main className="min-h-screen bg-white">
-      <div className="lg:flex">
-        <Sidebar />
+    <PageShell title="Journey">
+      <h1 className="text-4xl font-bold tracking-tight text-zinc-900">
+        Journey
+      </h1>
 
-        <div className="flex flex-1">
-          <div className="relative flex w-full flex-col">
-            <MobileHeader title="Journey" />
+      <div className="mt-12 space-y-12">
+        {timeline.map((block) => (
+          <section key={block.year}>
+            <h2 className="mb-6 font-mono text-sm font-semibold uppercase tracking-widest text-brand-700">
+              {block.year}
+            </h2>
 
-            <div className="content-wrapper">
-              <div className="content">
-                <div className="mb-6 lg:hidden">
-                  <h1 className="text-3xl font-bold">Journey</h1>
+            <div className="space-y-8 border-l border-zinc-200 pl-6">
+              {block.entries.map((entry) => (
+                <div key={entry.title} className="relative">
+                  {/* node */}
+                  <span className="absolute -left-[31px] top-1.5 h-3 w-3 rounded-full border-2 border-white bg-brand-500 ring-1 ring-brand-200" />
+                  <h3 className="text-lg font-semibold text-zinc-900">
+                    {entry.title}
+                  </h3>
+                  <div className="mt-1 text-sm leading-relaxed text-zinc-600">
+                    {entry.body}
+                  </div>
+                  {entry.bullets && (
+                    <ul className="mt-3 space-y-1.5">
+                      {entry.bullets.map((bullet) => (
+                        <li
+                          key={bullet}
+                          className="relative pl-4 text-sm leading-relaxed text-zinc-600 before:absolute before:left-0 before:top-2 before:h-1 before:w-1 before:rounded-full before:bg-brand-400"
+                        >
+                          {bullet}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
-
-                <h1 className="mb-8 text-4xl font-bold hidden lg:block">Journey</h1>
-
-                {/* Timeline */}
-                {/* increase vertical spacing between year sections on larger screens */}
-                <div className="space-y-12 lg:space-y-20">
-
-                    {/* 2025 – Present */}
-                  <div>
-                    <h2 className="mt-8 lg:mt-12 text-2xl font-bold mb-6">2025</h2>
-                    <div className="space-y-8">
-
-                      <div className="flex gap-4">
-                        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-black flex items-center justify-center">
-                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M8 0L10.5 5.5L16 8L10.5 10.5L8 16L5.5 10.5L0 8L5.5 5.5L8 0Z" fill="white"/>
-                          </svg>
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="text-xl font-semibold mb-2">Joined Radix</h3>
-                          <ul className="space-y-1 text-gray-700 list-disc list-inside mb-3">
-                            <li>Scaled Playwright automation suite to achieve 90%+ coverage across Web3 apps.</li>
-                            <li>Integrated MetaMask and Infura to simulate real decentralized transactions in QA pipelines.</li>
-                            <li>Developed test strategies for mint/burn token flows across Ethereum and Radix blockchains and Bridge Dapps.</li>
-                            <li>Validated complex React-based components — wallet connections, manifests, and dApp integrations.</li>
-                            <li>Created company-wide testing guidelines for writing semantic and testeable code</li>
-                          </ul>
-                          <p className="text-sm text-gray-600 mb-2">Key Projects: Instabridge (cross-chain bridge testing) & {' '}
-                    <a href="https://www.radixdlt.com/wallet" target="_blank" rel="noopener noreferrer" className="link break-words after:content-['_↗']">
-                      Radix Wallet
-                    </a>{' '} (mobile wallet QA & persona validation).</p>
-                        </div>
-                      </div>
-
-                      <div className="flex gap-4">
-                        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-black flex items-center justify-center">
-                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M8 0L10.5 5.5L16 8L10.5 10.5L8 16L5.5 10.5L0 8L5.5 5.5L8 0Z" fill="white"/>
-                          </svg>
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="text-xl font-semibold mb-2">Released new version of my personal website</h3>
-                          <p className="text-gray-700 mb-3">New version of my personal website built with Next.js, Tailwind CSS.</p>
-                        </div>
-                      </div>
-
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* 2022 */}
-                <div className="space-y-12 lg:space-y-20"></div>  
-        <div>
-          <h2 className="mt-8 lg:mt-12 text-2xl font-bold mb-6">2022</h2>
-                    <div className="space-y-8">
-
-                      
-                      <div className="flex gap-4">
-                        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-black flex items-center justify-center">
-                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M8 0L10.5 5.5L16 8L10.5 10.5L8 16L5.5 10.5L0 8L5.5 5.5L8 0Z" fill="white"/>
-                          </svg>
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="text-xl font-semibold mb-2">Joined Allianz</h3>
-                          <ul className="space-y-1 text-gray-700 list-disc list-inside">
-                            <li>As a Test Architect I designed and led enterprise-level QA automation aligned with Agile/DevOps best practices.</li>
-                            <li>Standardized automation pipelines across 50+ global engineers.</li>
-                            <li>Automated complex API validations using Rest-Assured, improving defect detection by 40%.</li>
-                            <li>Mentored QA engineers to adopt modern frameworks and CI/CD integrations.</li>
-                          </ul>
-                        
-                      </div>
-                    </div>
-                  </div>
-                  
-
-
-                  {/* 2019 */}
-                  <div>
-                    <h2 className="mt-8 lg:mt-12 space-y-8 text-2xl font-bold mb-6">2019</h2>
-                    <div className="space-y-8">
-                      <div className="flex gap-4">
-                        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-black flex items-center justify-center">
-                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M8 0L10.5 5.5L16 8L10.5 10.5L8 16L5.5 10.5L0 8L5.5 5.5L8 0Z" fill="white"/>
-                          </svg>
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="text-xl font-semibold mb-2">Joined Monolithic Power Systems</h3>
-                          <ul className="space-y-1 text-gray-700 list-disc list-inside">
-                            <li>Developed hybrid automation framework (Java, Cucumber, Rest-Assured) reducing regression by 70%.</li>
-                            <li>Automated desktop (using WinAppDriver) and web apps (Selenium and Grid); integrated test suites with TestRail and Jenkins CI.</li>
-                            <li>Led QA documentation, regression suites, and exploratory testing workflows.</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-
-
-                  {/* 2014 – 2021 */}
-                  <div className="space-y-12 lg:space-y-20"></div>
-                  <div>
-                    <h2 className="mt-8 lg:mt-12 text-2xl font-bold mb-6">Freelance journey</h2>
-                    <div className="space-y-8">
-                      <div className="flex gap-4">
-                        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-black flex items-center justify-center">
-                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M8 0L10.5 5.5L16 8L10.5 10.5L8 16L5.5 10.5L0 8L5.5 5.5L8 0Z" fill="white"/>
-                          </svg>
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="text-xl font-semibold mb-2">Working as SDET/QA Engineer Contractor</h3>
-                          <p className="text-gray-700 mb-2">Worked with {' '}
-                    <a href="https://www.lazydogrestaurants.com/" target="_blank" rel="noopener noreferrer" className="link break-words after:content-['_↗']">
-                      Lazy Dog Restaurant
-                    </a>{' '} , {' '}
-                    <a href="https://www.amazon.jobs/content/en/teams/worldwide-grocery-stores/amazon-go" target="_blank" rel="noopener noreferrer" className="link break-words after:content-['_↗']">
-                      Amazon Go
-                    </a>{' '}, <a href="https://neon.com/" target="_blank" rel="noopener noreferrer" className="link break-words after:content-['_↗']">
-                      neondb
-                    </a>{' '}, among others.</p>
-                          <ul className="space-y-1 text-gray-700 list-disc list-inside">
-                            <li>Implemented automated frameworks using Typescript, Python, Java, and Swift (XCUITest, Pytest, Allure).</li>
-                            <li>Built contract-based testing suites with pact-jvm for backend validation.</li>
-                            <li>Executed cross-browser E2E tests on BrowserStack for multi-vendor systems.</li>
-                            <li>Implemented automation frameworks from scratch using Playwright / Cypress / Webdriverio</li>
-                            <li>Designed UAT workflows and CI/CD-integrated QA pipelines from scratch.</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* 2015 */}
-                  <div className="space-y-12 lg:space-y-20"></div>
-                  <div>
-                    <h2 className="mt-8 lg:mt-12 text-2xl font-bold mb-6">2015</h2>
-                    <div className="space-y-8">
-                      <div className="flex gap-4">
-                        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-black flex items-center justify-center">
-                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M8 0L10.5 5.5L16 8L10.5 10.5L8 16L5.5 10.5L0 8L5.5 5.5L8 0Z" fill="white"/>
-                          </svg>
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="text-xl font-semibold mb-2">won a Scholarship with DAAD in Germany</h3>
-                            <p className="text-gray-700">I got the Study visit by groups of foreign students scholarship by DAAD, had the opportunity to visit Universities and Research institutes across Germany.</p>
-                        </div>
-                      </div>
-
-                      <div className="flex gap-4">
-                        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-black flex items-center justify-center">
-                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M8 0L10.5 5.5L16 8L10.5 10.5L8 16L5.5 10.5L0 8L5.5 5.5L8 0Z" fill="white"/>
-                          </svg>
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="text-xl font-semibold mb-2">Graduated from university</h3>
-                          <p className="text-gray-700">It was like forever but now missing it!</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* 2017 */}
-                  <div className="space-y-12 lg:space-y-20"></div>
-                  <div>
-                    <h2 className="mt-8 lg:mt-12 text-2xl font-bold mb-6">2014</h2>
-                    <div className="space-y-8">
-                      <div className="flex gap-4">
-                        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-black flex items-center justify-center">
-                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M8 0L10.5 5.5L16 8L10.5 10.5L8 16L5.5 10.5L0 8L5.5 5.5L8 0Z" fill="white"/>
-                          </svg>
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="text-xl font-semibold mb-2">Joined SPRC</h3>
-                          <p className="text-gray-700">Landed my first role at Sociedad Portuaria Regional Cartagena while studying, expanding my perspective.</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* 2014 */}
-                  <div className="space-y-12 lg:space-y-20"></div>
-                  <div>
-                    <h2 className="mt-8 lg:mt-12 text-2xl font-bold mb-6">2010</h2>
-                    <div className="space-y-8">
-                      <div className="flex gap-4">
-                        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-black flex items-center justify-center">
-                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M8 0L10.5 5.5L16 8L10.5 10.5L8 16L5.5 10.5L0 8L5.5 5.5L8 0Z" fill="white"/>
-                          </svg>
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="text-xl font-semibold mb-2">Started at University of Cartagena</h3>
-                          <p className="text-gray-700">Studying Software Engineering at public university was great!</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* 1996 */}
-                  <div className="space-y-12 lg:space-y-20"></div>
-                  <div>
-                    <h2 className="mt-8 lg:mt-12 text-2xl font-bold mb-6">1993</h2>
-                    <div className="space-y-8">
-                      <div className="flex gap-4">
-                        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-black flex items-center justify-center">
-                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M8 0L10.5 5.5L16 8L10.5 10.5L8 16L5.5 10.5L0 8L5.5 5.5L8 0Z" fill="white"/>
-                          </svg>
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="text-xl font-semibold mb-2">Born</h3>
-                          <p className="text-gray-700">On the 17th of December.</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
-          </div>
-        </div>
+          </section>
+        ))}
       </div>
-    </main>
+    </PageShell>
   );
 }

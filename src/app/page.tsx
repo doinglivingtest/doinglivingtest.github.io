@@ -1,132 +1,117 @@
 import Link from "next/link";
-import Sidebar from "@/components/Sidebar";
-import MobileHeader from "@/components/MobileHeader";
+import { ArrowRight, Bug, GitBranch, ShieldCheck } from "lucide-react";
+import PageShell from "@/components/PageShell";
+import ProjectCard from "@/components/ProjectCard";
+import { projects } from "@/lib/projects";
+
+const focusAreas = [
+  {
+    icon: Bug,
+    title: "Break things on purpose",
+    body: "End-to-end and exploratory testing that finds the edge cases before your users do.",
+  },
+  {
+    icon: GitBranch,
+    title: "Automate the boring parts",
+    body: "Scalable Playwright, Cypress and Pytest suites wired straight into CI/CD pipelines.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Build quality in",
+    body: "Test strategy, contract testing and guidelines that make whole teams ship with confidence.",
+  },
+];
 
 export default function Home() {
+  const featured = projects.filter((p) => p.featured).slice(0, 2);
+
   return (
-    <main className="min-h-screen bg-white">
-      <div className="lg:flex">
-        <Sidebar />
+    <PageShell title="Home">
+      {/* Hero */}
+      <span className="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-3 py-1 text-xs font-medium text-brand-700">
+        <span className="h-1.5 w-1.5 rounded-full bg-brand-500" />
+        Senior QA Engineer @ Ava Labs
+      </span>
 
-        {/* Main Content */}
-        <div className="flex flex-1">
-          <div className="relative flex w-full flex-col">
-            <MobileHeader title="Alejandro Tellez" />
+      <h1 className="mt-5 text-4xl font-bold tracking-tight text-zinc-900 sm:text-5xl">
+        Hi! I&apos;m Alejandro <span className="inline-block">👋</span>
+      </h1>
 
-            {/* Content */}
-            <div className="content-wrapper">
-              <div className="content min-h-screen">
-                {/* Mobile Page Title */}
-                <div className="mb-6 lg:hidden">
-                  <h1 className="text-3xl font-bold">Home</h1>
-                </div>
-
-                {/* Hero Section */}
-                <h1 className="mb-4 text-4xl font-bold">Hi! I'm Alejandro 👋</h1>
-
-                <div className="space-y-4 text-base leading-relaxed">
-                  <p>
-                    Senior Software Engineer who breaks things so users don't have to. Passionate about code quality, automation, building products, reading books, traveling and building a better web and DeFi. Proudly born and raised in Colombia 🇨🇴 Based in Barcelona, Spain 🇪🇸
-                  </p>
-
-                  <p>
-                    Developing stuff at{' '}
-                    <a href="https://www.radixdlt.com/" target="_blank" rel="noopener noreferrer" className="link break-words after:content-['_↗']">
-                      Radix
-                    </a>{' '}
-                    to helping user and devs to have a radically better experience needed for everyone to confidently use Web3 & DeFi.
-                  </p>
-                </div>
-
-                {/* Writing Section */}
-                <Link className="items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors duration-300 text-gray-900 underline-offset-4 hover:underline inline px-0" href="/writing">
-                  <h2 className="mb-4 mt-8 text-2xl font-bold">Writing</h2>
-                </Link>
-
-                <div className="text-sm">
-                  {/* Table Header */}
-                  <div className="grid grid-cols-6 py-2 font-medium text-gray-500">
-                    <span className="col-span-1 hidden text-left md:grid">Year</span>
-                    <span className="col-span-6 md:col-span-5">
-                      <span className="grid grid-cols-4 items-center md:grid-cols-8">
-                        <span className="col-span-1 text-left">Date</span>
-                        <span className="col-span-2 md:col-span-6">Title</span>
-                        <span className="col-span-1 text-right">Views</span>
-                      </span>
-                    </span>
-                  </div>
-
-                  {/* Writing Posts */}
-                  <div className="group/list-wrapper">
-                    <ul className="group/list list-none">
-                      {/* Post 1 */}
-                      <li className="group/list-item grid grid-cols-6 p-0 group-hover/list-wrapper:text-gray-300">
-                        <span className="pointer-events-none col-span-1 hidden items-center tabular-nums transition-colors duration-300 group-hover/list:text-gray-900 md:grid border-t border-gray-200 py-4">
-                          2024
-                        </span>
-                        <a className="col-span-6 group-hover/list-item:text-gray-900 md:col-span-5" href="/writing/dead_modules">
-                          <span className="grid grid-cols-4 items-center gap-2 border-t border-gray-200 py-4 md:grid-cols-8">
-                            <span className="col-span-1 text-left tabular-nums">
-                              <time dateTime="2024-07-28T00:00:00.000+03:00" className="hidden md:block">27/07</time>
-                              <time dateTime="2024-07-28T00:00:00.000+03:00" className="md:hidden">07/2024</time>
-                            </span>
-                            <span className="col-span-2 line-clamp-4 md:col-span-6">
-                              Building CLI tool with Go to clean up node_modules
-                            </span>
-                            <span className="col-span-1">
-                              <span className="flex justify-end tabular-nums" title="379 views">379</span>
-                            </span>
-                          </span>
-                        </a>
-                      </li>
-
-                      {/* Post 2 */}
-                      <li className="group/list-item grid grid-cols-6 p-0 group-hover/list-wrapper:text-gray-300">
-                        <span className="pointer-events-none col-span-1 hidden items-center tabular-nums transition-colors duration-300 md:grid border-t border-gray-200 py-4">
-                        </span>
-                        <a className="col-span-6 group-hover/list-item:text-gray-900 md:col-span-5" href="/writing/vaul">
-                          <span className="grid grid-cols-4 items-center gap-2 border-t border-gray-200 py-4 md:grid-cols-8">
-                            <span className="col-span-1 text-left tabular-nums">
-                              <time dateTime="2024-06-05T00:00:00.000+03:00" className="hidden md:block">04/06</time>
-                              <time dateTime="2024-06-05T00:00:00.000+03:00" className="md:hidden">06/2024</time>
-                            </span>
-                            <span className="col-span-2 line-clamp-4 md:col-span-6">
-                              Fixing open source bug
-                            </span>
-                            <span className="col-span-1">
-                              <span className="flex justify-end tabular-nums" title="519 views">519</span>
-                            </span>
-                          </span>
-                        </a>
-                      </li>
-
-                      {/* Post 3 */}
-                      <li className="group/list-item grid grid-cols-6 p-0 group-hover/list-wrapper:text-gray-300">
-                        <span className="pointer-events-none col-span-1 hidden items-center tabular-nums transition-colors duration-300 md:grid border-t border-gray-200 py-4">
-                        </span>
-                        <a className="col-span-6 group-hover/list-item:text-gray-900 md:col-span-5" href="/writing/welcome">
-                          <span className="grid grid-cols-4 items-center gap-2 border-t border-gray-200 py-4 md:grid-cols-8">
-                            <span className="col-span-1 text-left tabular-nums">
-                              <time dateTime="2024-06-01T00:00:00.000+03:00" className="hidden md:block">31/05</time>
-                              <time dateTime="2024-06-01T00:00:00.000+03:00" className="md:hidden">05/2024</time>
-                            </span>
-                            <span className="col-span-2 line-clamp-4 md:col-span-6">
-                              Welcome
-                            </span>
-                            <span className="col-span-1">
-                              <span className="flex justify-end tabular-nums" title="444 views">444</span>
-                            </span>
-                          </span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div className="mt-5 space-y-4 text-base leading-relaxed text-zinc-600">
+        <p>
+          Senior Web3 QA Engineer &amp; SDET who breaks things so your users
+          don&apos;t have to. I care about code quality, test automation and
+          building products with high quality.
+        </p>
+        <p>
+          Currently developing quality at{" "}
+          <a
+            href="https://www.avalabs.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link"
+          >
+            Ava Labs
+          </a>
+          {" "} for Core — arguably the most unfairly stacked wallet in Web3: swaps, perps, bridging, portfolio tracking… basically your financial survival kit for crypto degenerates.
+        </p>
       </div>
-    </main>
+
+      {/* Focus areas */}
+      <div className="mt-10 grid gap-3 sm:grid-cols-3">
+        {focusAreas.map((area) => {
+          const Icon = area.icon;
+          return (
+            <div
+              key={area.title}
+              className="rounded-xl border border-zinc-200 bg-zinc-50/60 p-4"
+            >
+              <Icon className="h-5 w-5 text-brand-600" aria-hidden="true" />
+              <h3 className="mt-3 text-sm font-semibold text-zinc-900">
+                {area.title}
+              </h3>
+              <p className="mt-1 text-sm leading-relaxed text-zinc-600">
+                {area.body}
+              </p>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Selected work */}
+      <div className="mt-12 flex items-center justify-between">
+        <h2 className="text-2xl font-bold text-zinc-900">Selected work</h2>
+        <Link
+          href="/projects"
+          className="inline-flex items-center gap-1 text-sm font-medium text-brand-700 transition-colors duration-200 hover:text-brand-600"
+        >
+          View all
+          <ArrowRight className="h-4 w-4" aria-hidden="true" />
+        </Link>
+      </div>
+
+      <div className="mt-5 grid gap-4 sm:grid-cols-2">
+        {featured.map((project) => (
+          <ProjectCard key={project.slug} project={project} />
+        ))}
+      </div>
+
+      {/* CTA */}
+      <div className="mt-12 rounded-xl border border-zinc-200 bg-zinc-50 p-6">
+        <h2 className="text-lg font-semibold text-zinc-900">
+          Let&apos;s make quality a feature.
+        </h2>
+        <p className="mt-1 text-sm text-zinc-600">
+          Open to interesting QA, SDET and test-architecture conversations.
+        </p>
+        <a
+          href="mailto:alejandrotellezm12@gmail.com"
+          className="mt-4 inline-flex items-center gap-2 rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white transition-colors duration-200 hover:bg-brand-700"
+        >
+          Get in touch
+          <ArrowRight className="h-4 w-4" aria-hidden="true" />
+        </a>
+      </div>
+    </PageShell>
   );
 }
